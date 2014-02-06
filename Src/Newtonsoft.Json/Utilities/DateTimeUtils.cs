@@ -43,9 +43,7 @@ namespace Newtonsoft.Json.Utilities
 #if NET20
       return TimeZone.CurrentTimeZone.GetUtcOffset(d);
 #else
-      if(TimeZone.Local == null)
-        return new TimeSpan ();
-      return TimeZoneInfo.Local.GetUtcOffset(d);
+      return TimeZoneInfo.Local == null ? new TimeSpan() : TimeZoneInfo.Local.GetUtcOffset(d);
 #endif
     }
 
